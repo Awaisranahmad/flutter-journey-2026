@@ -15,10 +15,10 @@
 
 ## 🛠 Tech Stack
 - Flutter + Dart (Frontend)
-- (Coming: Node.js, MongoDB, DSA)
+- (Coming soon: Node.js, MongoDB, DSA)
 
-## 📂 Structure
-Each folder = 1 day (or combined days) of learning. Each has its own README with what I learned and the code.
+## 📂 Repository Structure
+Each folder represents one day (or combined days) of learning. Every folder contains its own README with detailed notes, challenges faced, and the project code.
 
 ## 🎯 Goals
 - [ ] Month 3: Solid Flutter foundation
