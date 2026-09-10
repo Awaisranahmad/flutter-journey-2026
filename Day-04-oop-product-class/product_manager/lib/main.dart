@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Product Manager',
-      home: const ProductListPage(),
       debugShowCheckedModeBanner: false,
+      title: 'Product Manager',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const ProductListPage(),
     );
   }
 }
@@ -27,22 +28,16 @@ class ProductListPage extends StatefulWidget {
 
 class _ProductListPageState extends State<ProductListPage> {
   List<Product> products = [
-    Product(name: 'apple', price: 12, quantity: 3),
-    Product(name: 'Milk', price: 250, quantity: 1),
-    Product(name: 'Bread', price: 120, quantity: 3),
+    Product(name: 'Apple', price: 23),
+    Product(name: 'Lemon', price: 233),
   ];
-  double _calculatedGrandTotal() {
+
+  double _calculateGrandTotal() {
     double total = 0;
     for (var product in products) {
       total += product.totalPrice;
     }
     return total;
-  }
-
-  void _increaseQuantity(int index) {
-    setState(() {
-      products[index].quantity++;
-    });
   }
 
   void _decreaseQuantity(int index) {
@@ -53,6 +48,12 @@ class _ProductListPageState extends State<ProductListPage> {
     });
   }
 
+  void _increaseQuantity(int index) {
+    setState(() {
+      products[index].quantity++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,46 +61,41 @@ class _ProductListPageState extends State<ProductListPage> {
         title: Text('Product Manager'),
         actions: [
           Padding(
-            padding: const EdgeInsetsGeometry.all(16),
-            child: Text(
-              'Rs. ${_calculatedGrandTotal().toString()}',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
+            padding: EdgeInsetsGeometry.all(16),
+            child: Text('Rs ${_calculateGrandTotal().toStringAsFixed(0)}'),
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsetsGeometry.all(16.0),
+        padding: EdgeInsetsGeometry.all(16),
         child: ListView.builder(
           itemCount: products.length,
-          itemBuilder: (context, int index) {
-            final product = products[index];
+          itemBuilder: (BuildContext context, int index) {
+            final productss = products[index];
             return Card(
-              color: Colors.blue[50],
-              margin: const EdgeInsets.only(bottom: 12),
+              color: Colors.blue,
               child: ListTile(
-                title: Text(product.name, style: const TextStyle(fontSize: 18)),
-
+                title: Text(productss.name),
                 subtitle: Text(
-                  'Rs. ${product.price} x ${product.quantity} = ${product.totalPrice}',
+                  '${productss.price} x ${productss.quantity} = ${productss.totalPrice}',
                 ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
                       onPressed: () => _decreaseQuantity(index),
-                      icon: const Icon(Icons.remove_circle_outline),
+                      icon: Icon(
+                        Icons.remove_circle_outline,
+                        color: Colors.red,
+                      ),
                     ),
                     Text(
-                      '${product.quantity}',
-                      style: const TextStyle(fontSize: 16),
+                      '${productss.quantity}',
+                      style: TextStyle(fontSize: 20),
                     ),
                     IconButton(
-                      icon: const Icon(
-                        Icons.add_circle_outline,
-                        color: Colors.green,
-                      ),
                       onPressed: () => _increaseQuantity(index),
+                      icon: Icon(Icons.add_circle_outline, color: Colors.green),
                     ),
                   ],
                 ),
