@@ -1,24 +1,35 @@
-# Day 04: OOP + Classes (Product Manager)
+# Day 04: Complete OOP (Product Manager)
 
 ## 📚 What I Learned
-- What Classes and Objects are
-- Constructors with `required` and default values
-- Creating a calculated property with a getter (`totalPrice`)
-- Storing objects in a list (`List<Product>`)
-- Splitting code into multiple files (`models/product.dart`)
-- The difference between `final` and non-final properties
+### OOP Fundamentals
+- **Class & Object:** Blueprint vs actual instance
+- **Constructor:** `required`, default values, named parameters
+- **Getter:** Calculated properties like `totalPrice`
+
+### Four Pillars of OOP
+1. **Encapsulation:** Private fields (`_quantity`), access only via methods
+2. **Inheritance:** `ElectronicProduct`, `FoodProduct` extend `Product`
+3. **Polymorphism:** Different classes, same method name (`totalPrice`)
+4. **Abstraction:** `abstract class Product` with abstract method `getDescription()`
+
+### Bonus
+- **Mixins:** `Discountable` reusable behavior
+- **File splitting:** `models/` folder for clean architecture
 
 ## 🛠 Project: Product Manager App
-- Product list with name, price, and quantity.
-- Real-time grand total calculation in the AppBar.
-- Increase/decrease quantity with bounds checking (min 1).
-- Add new product with input validation.
+- Products with name, price, quantity (encapsulated)
+- Two types: Electronic (+5% tax) and Food (−2% discount)
+- Grand total in AppBar, updates in real-time
+- Quantity controls with validation
+- Description method (abstract) per product
+- Discount mixin applied to food items
 
 ## 🎯 Challenges Faced
-1. `final` vs non-final properties — `name` and `price` don't change, `quantity` does.
-2. `ListView` must be wrapped in `Expanded` inside a `Column`, otherwise the app crashes.
-3. Safe number parsing with `double.tryParse()` to handle invalid input.
+1. `abstract class` cannot be instantiated directly
+2. `mixin` vs `abstract class` — when to use which
+3. Calling parent's getter with `super.totalPrice`
+4. `@override` keyword required for polymorphic behavior
 
 ## 🚀 Next Steps
-- Day 05: Navigation (multi-screen app)>>>
+- Day 05: Navigation (multi-screen app)
 - Day 06: Provider state management
