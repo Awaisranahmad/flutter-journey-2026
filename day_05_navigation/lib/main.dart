@@ -1,8 +1,10 @@
-import 'package:day_05_navigation/screens/home_screen.dart';
+import 'package:day_05_navigation/screens/contact_list_screen.dart';
+import 'package:day_05_navigation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+// import 'screens/contacts_list_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Navigation Demo',
+      title: 'Contacts App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
+      home: const LoginScreen(),
     );
   }
 }
