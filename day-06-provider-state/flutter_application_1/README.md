@@ -1,17 +1,29 @@
-# flutter_application_1
+# Day 06: Provider State Management
 
-A new Flutter project.
+## 📚 What I Learned
+- What is Provider and why it's needed
+- `ChangeNotifier` and `notifyListeners()`
+- `ChangeNotifierProvider` setup at app root
+- `Consumer` widget for reactive rebuilds
+- `context.read()` vs `context.watch()` vs `Consumer`
+- Sharing state across multiple screens
+- Immutable models with `copyWith()` pattern
+- Unmodifiable lists for data safety
 
-## Getting Started
+## 🛠 Project: Shopping Cart App
+- Product list screen with 5 products
+- Add to cart (multiple times = quantity++)
+- Cart screen showing all items with quantity controls
+- Real-time total calculation
+- Remove items / clear cart
+- Cart badge showing item count
 
-This project is a starting point for a Flutter application.
+## 🎯 Challenges Faced
+1. Understanding when to use `read` vs `watch`
+2. Making cart items immutable with `copyWith`
+3. Preventing direct list modification with `List.unmodifiable`
+4. Efficient rebuilding with `Consumer` (only rebuild what's needed)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Next Steps
+- Day 07: HTTP requests + REST API integration
+- Day 08: Local storage (SharedPreferences, SQLite)
