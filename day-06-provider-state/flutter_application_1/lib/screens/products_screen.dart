@@ -86,6 +86,7 @@ class ProductsScreen extends StatelessWidget {
                   content: Text('${product.name} added to cart'),
                   duration: const Duration(milliseconds: 800),
                   behavior: SnackBarBehavior.floating,
+                  backgroundColor: const Color.fromARGB(255, 63, 107, 86),
                 ),
               );
             },
