@@ -3,12 +3,16 @@ import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 import '../widgets/cart_item_tile.dart';
 
+/// Screen that displays the user's shopping cart, total pricing,
+/// and options to update quantities, remove items, or clear the cart.
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // ---------- CONSUMER: Poori screen rebuild hogi jab cart badle ----------
+    // ---------- CONSUMER WIDGET ----------
+    // Listens for changes in CartProvider and rebuilds the UI automatically
+    // whenever the state updates (e.g., items added, removed, or quantity changed).
     return Consumer<CartProvider>(
       builder: (context, cart, _) {
         return Scaffold(
@@ -17,6 +21,7 @@ class CartScreen extends StatelessWidget {
             backgroundColor: Colors.blue,
             foregroundColor: Colors.white,
             actions: [
+              // Show the "Clear Cart" button in the AppBar only if the cart is not empty
               if (!cart.isEmpty)
                 IconButton(
                   icon: const Icon(Icons.delete_sweep),
@@ -25,6 +30,7 @@ class CartScreen extends StatelessWidget {
                 ),
             ],
           ),
+          // Toggle view: Display empty placeholder if cart is empty, otherwise show cart content
           body: cart.isEmpty
               ? _buildEmptyState()
               : _buildCartContent(context, cart),
@@ -33,7 +39,8 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  // ---------- EMPTY STATE ----------
+  // ---------- EMPTY STATE UI ----------
+  /// Renders a placeholder UI when there are no items in the cart.
   Widget _buildEmptyState() {
     return const Center(
       child: Column(
@@ -55,11 +62,12 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  // ---------- CART CONTENT ----------
+  // ---------- MAIN CART CONTENT ----------
+  /// Renders the scrollable list of cart items and the checkout summary box.
   Widget _buildCartContent(BuildContext context, CartProvider cart) {
     return Column(
       children: [
-        // Items list
+        // ---------- SCROLLABLE ITEM LIST ----------
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 8),
@@ -68,6 +76,7 @@ class CartScreen extends StatelessWidget {
               final item = cart.items[index];
               return CartItemTile(
                 item: item,
+                // Callback functions passed to the child widget (CartItemTile)
                 onIncrease: () => cart.increaseQuantity(item.product.id),
                 onDecrease: () => cart.decreaseQuantity(item.product.id),
                 onRemove: () => _confirmRemove(
@@ -81,7 +90,7 @@ class CartScreen extends StatelessWidget {
           ),
         ),
 
-        // ---------- CHECKOUT SUMMARY ----------
+        // ---------- CHECKOUT SUMMARY SECTION ----------
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -96,8 +105,10 @@ class CartScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
+              // Total quantity row
               _summaryRow('Items', '${cart.totalQuantity}'),
               const SizedBox(height: 6),
+              // Total price row
               _summaryRow(
                 'Total',
                 cart.formattedTotal,
@@ -105,6 +116,7 @@ class CartScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               const SizedBox(height: 12),
+              // Checkout action button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -130,7 +142,8 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  // ---------- HELPER: Summary Row ----------
+  // ---------- HELPER WIDGET: SUMMARY ROW ----------
+  /// Helper method to create key-value text pairs for the checkout summary.
   Widget _summaryRow(
     String label,
     String value, {
@@ -159,7 +172,8 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  // ---------- CONFIRM: Remove Item ----------
+  // ---------- DIALOG: REMOVE SINGLE ITEM ----------
+  /// Shows a confirmation dialog before removing a single product from the cart.
   void _confirmRemove(
     BuildContext context,
     CartProvider cart,
@@ -179,7 +193,7 @@ class CartScreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               cart.removeProduct(productId);
-              Navigator.pop(dialogContext);
+              Navigator.pop(dialogContext); // Close dialog
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('Remove'),
@@ -189,7 +203,8 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  // ---------- CONFIRM: Clear Cart ----------
+  // ---------- DIALOG: CLEAR ALL ITEMS ----------
+  /// Shows a confirmation dialog before emptying the entire cart.
   void _confirmClear(BuildContext context, CartProvider cart) {
     showDialog(
       context: context,
@@ -204,7 +219,7 @@ class CartScreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               cart.clearCart();
-              Navigator.pop(dialogContext);
+              Navigator.pop(dialogContext); // Close dialog
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('Clear All'),
@@ -214,7 +229,8 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  // ---------- CHECKOUT ----------
+  // ---------- DIALOG: CHECKOUT & ORDER SUCCESS ----------
+  /// Simulates checkout by displaying order summary and clearing the cart state.
   void _checkout(BuildContext context, CartProvider cart) {
     showDialog(
       context: context,
@@ -230,7 +246,7 @@ class CartScreen extends StatelessWidget {
             onPressed: () {
               cart.clearCart();
               Navigator.pop(dialogContext); // Close dialog
-              Navigator.pop(context); // Back to products
+              Navigator.pop(context); // Navigate back to previous screen
             },
             child: const Text('Done'),
           ),
