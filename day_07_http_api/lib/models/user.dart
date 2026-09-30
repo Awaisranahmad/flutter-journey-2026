@@ -30,7 +30,7 @@ class User {
   String get initial =>
       _name.trim().isNotEmpty ? _name.trim()[0].toUpperCase() : '?';
   factory User.fromJson(Map<String, dynamic> json) {
-    // Nested objects ko safely access karo
+    // Nested objects 
     final address = json['address'] as Map<String, dynamic>?;
     final company = json['company'] as Map<String, dynamic>?;
 
