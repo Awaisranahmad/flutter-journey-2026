@@ -59,7 +59,10 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         content: Text('Post created with ID: $postId'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(dialogContext),
+            onPressed: () {
+              Navigator.pop(dialogContext); // Dialog band
+              Navigator.pop(context, true); // Screen se wapas, result 'true'
+            },
             child: const Text('OK'),
           ),
         ],
