@@ -1,17 +1,25 @@
-# local_storage
+# Day 09: Local Storage with SharedPreferences
 
-A new Flutter project.
+## 📚 What I Learned
+- Storing simple data (String, bool, int) locally
+- `SharedPreferences` package integration
+- Persisting user preferences across app restarts
+- Integrating Provider with Local Storage
+- Reading and Writing data asynchronously
+- Dynamic Theme switching based on saved state
 
-## Getting Started
+## 🛠 Project: Settings App
+- Dark Mode toggle (saved permanently)
+- User Name input (saved permanently)
+- Language selection (Dropdown)
+- Data survives app restart
+- Dynamic UI theming (Light/Dark mode)
 
-This project is a starting point for a Flutter application.
+## 🎯 Challenges Faced
+1. `WidgetsFlutterBinding.ensureInitialized()` in `main()`
+2. Syncing `ChangeNotifier` state with `SharedPreferences`
+3. Managing async data loading on app startup
+4. Applying the theme dynamically to `MaterialApp`
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Next Steps
+- Day 10: Local Database (SQLite/Hive) for complex data
