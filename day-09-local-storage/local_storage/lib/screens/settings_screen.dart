@@ -101,7 +101,7 @@ class SettingsScreen extends StatelessWidget {
             title: const Text('Dark Mode'),
             subtitle: Text(settings.isDarkMode ? 'On' : 'Off'),
             value: settings.isDarkMode,
-            activeColor: Colors.blue,
+            activeThumbColor: Colors.blue,
             onChanged: (value) => provider.toggleDarkMode(value),
           ),
           const Divider(),
