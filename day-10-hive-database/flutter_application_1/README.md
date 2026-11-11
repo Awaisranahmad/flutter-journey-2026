@@ -1,17 +1,25 @@
-# flutter_application_1
+# Day 10: Local Database with Hive
 
-A new Flutter project.
+## 📚 What I Learned
+- Introduction to NoSQL Local Databases (Hive)
+- Initializing Hive and opening a Box
+- Storing complex objects as Maps
+- Full CRUD operations (Create, Read, Update, Delete) with a local DB
+- Combining Provider (State Management) with Hive (Storage)
+- Handling async operations and UI updates
 
-## Getting Started
+## 🛠 Project: Offline Notes App
+- Create new notes (Title + Content)
+- View all saved notes in a list
+- Edit existing notes
+- Delete notes (with confirmation dialog)
+- Data persists permanently on the device
 
-This project is a starting point for a Flutter application.
+## 🎯 Challenges Faced
+1. `Hive.initFlutter()` setup in `main()`
+2. Converting `DateTime` to String for storage
+3. Updating Hive Box while syncing the UI state
+4. Managing navigation after saving a note
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Next Steps
+- Day 11: Firebase Authentication (Login/Signup)
