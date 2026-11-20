@@ -42,3 +42,8 @@ lib/firebase_options.dart
 firebase.json
 lib/firebase_options.dart
 android/app/google-services.json
+# Firebase config & keys
+lib/firebase_options.dart
+web/firebase-messaging-sw.js
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
