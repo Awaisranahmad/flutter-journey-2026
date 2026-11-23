@@ -1,17 +1,15 @@
-# day_16_animations
+# Day 16: Flutter Animations (Implicit & Explicit)
 
-A new Flutter project.
+## 📚 What I Learned
+- Difference between Implicit and Explicit Animations
+- Using `AnimatedContainer` for smooth layout transitions
+- Using `AnimatedOpacity` for fade effects
+- Creating screen transitions with `Hero` animations
+- Controlling animations manually with `AnimationController` and `Tween`
+- Performance optimization during animations
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠 Project: Animated UI Showcase
+- Tap to expand/shrink a box (Implicit)
+- Fade in/out text (Implicit)
+- Image zoom transition to next screen (Hero)
+- Custom loading spinner (Explicit Animation)
